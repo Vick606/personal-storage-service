@@ -1,0 +1,32 @@
+<%- include('layout', { user: user }) %>
+
+<div class="bg-white shadow-md rounded-lg overflow-hidden">
+    <div class="p-6">
+        <h2 class="text-2xl font-bold mb-4"><%= folder.name %></h2>
+        <div class="mb-4">
+            <h3 class="text-lg font-semibold mb-2">Files</h3>
+            <ul class="divide-y divide-gray-200">
+                <% files.forEach(file => { %>
+                    <li class="py-4 flex justify-between items-center">
+                        <div>
+                            <p class="text-sm font-medium text-gray-900"><%= file.name %></p>
+                            <p class="text-sm text-gray-500"><%= file.size %> bytes</p>
+                        </div>
+                        <div>
+                            <a href="/files/<%= file.id %>/download" class="text-blue-500 hover:text-blue-600 mr-4">Download</a>
+                            <button class="text-red-500 hover:text-red-600 deleteFileBtn" data-file-id="<%= file.id %>">Delete</button>
+                        </div>
+                    </li>
+                <% }) %>
+            </ul>
+        </div>
+        <form action="/folders/<%= folder.id %>/upload" method="POST" enctype="multipart/form-data" class="mb-4">
+            <div class="flex items-center">
+                <input type="file" name="file" required class="mr-4">
+                <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                    Upload File
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
