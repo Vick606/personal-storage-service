@@ -28,5 +28,18 @@
                 </button>
             </div>
         </form>
+<div class="mt-6">
+    <h3 class="text-lg font-semibold mb-2">Share Folder</h3>
+    <form id="shareFolderForm" class="flex items-center">
+        <input type="number" name="duration" placeholder="Duration in days" required class="mr-2 p-2 border rounded">
+        <button type="submit" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded">
+            Generate Share Link
+        </button>
+    </form>
+    <div id="shareLink" class="mt-2 hidden">
+        <p class="text-sm text-gray-600">Share this link:</p>
+        <input type="text" id="shareLinkInput" readonly class="w-full p-2 border rounded bg-gray-100">
+    </div>
+</div>
     </div>
 </div>
