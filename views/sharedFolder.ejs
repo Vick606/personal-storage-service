@@ -1,0 +1,24 @@
+<%- include('layout', { user: null }) %>
+
+<div class="bg-white shadow-md rounded-lg overflow-hidden">
+    <div class="p-6">
+        <h2 class="text-2xl font-bold mb-4">Shared Folder: <%= sharedFolder.folder.name %></h2>
+        <p class="text-sm text-gray-500 mb-4">This shared link will expire on <%= sharedFolder.expiresAt.toLocaleString() %></p>
+        <div class="mb-4">
+            <h3 class="text-lg font-semibold mb-2">Files</h3>
+            <ul class="divide-y divide-gray-200">
+                <% sharedFolder.folder.files.forEach(file => { %>
+                    <li class="py-4 flex justify-between items-center">
+                        <div>
+                            <p class="text-sm font-medium text-gray-900"><%= file.name %></p>
+                            <p class="text-sm text-gray-500"><%= file.size %> bytes</p>
+                        </div>
+                        <div>
+                            <a href="/files/<%= file.id %>/download" class="text-blue-500 hover:text-blue-600 mr-4">Download</a>
+                        </div>
+                    </li>
+                <% }) %>
+            </ul>
+        </div>
+    </div>
+</div>
